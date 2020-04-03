@@ -22,3 +22,6 @@ steps:
 - script: dotnet build
   workingDirectory: Instrument_Store
   displayName: dotnet build
+
+- script: dotnet test
+  displayName: dotnet test
