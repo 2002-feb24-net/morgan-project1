@@ -1,13 +1,16 @@
 ﻿using Instrument_Store.Core;
 using Instrument_Store.Infrastructure.Interfaces;
+using Instrument_Store.Infrastructure.Model;
+using NLog;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Instrument_Store.Infrastructure.Repositories
 {
     public class InstrumentRepository : IInstrumentRepository
     {
+        private readonly StoreDbContext _cont;
+
+        private static readonly ILogger s_logger = LogManager.GetCurrentClassLogger();
         public void AddCustomer(Customer customer)
         {
             throw new NotImplementedException();
@@ -33,14 +36,15 @@ namespace Instrument_Store.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public void SearchCustomer(Customer customer)
+        public void StoreOrderHistory(Order order)
         {
             throw new NotImplementedException();
         }
 
-        public void StoreOrderHistory(Order order)
+        public void Save()
         {
-            throw new NotImplementedException();
+            s_logger.Info("Saving changes to the database");
+            _cont.SaveChanges();
         }
     }
 }

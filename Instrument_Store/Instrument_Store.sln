@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instrument_Store.Web", "Instrument_Store.Web.csproj", "{3903DFD3-CBE8-4101-99D0-E566B8FA5E76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Instrument_Store.Web", "Instrument_Store.Web.csproj", "{3903DFD3-CBE8-4101-99D0-E566B8FA5E76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instrument_Store.Core", "..\Instrument_Store.Core\Instrument_Store.Core.csproj", "{5E201E49-A3F5-44F4-A453-BFFD0B384FE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Instrument_Store.Core", "..\Instrument_Store.Core\Instrument_Store.Core.csproj", "{5E201E49-A3F5-44F4-A453-BFFD0B384FE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instrument_Store.Infrastructure", "..\Instrument_Store.Infrastructure\Instrument_Store.Infrastructure.csproj", "{BEE3FEAD-C849-4F1D-9875-DBE936C3638A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Instrument_Store.Infrastructure", "..\Instrument_Store.Infrastructure\Instrument_Store.Infrastructure.csproj", "{BEE3FEAD-C849-4F1D-9875-DBE936C3638A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instrument_Store.Test", "..\Instrument_Store.Test\Instrument_Store.Test.csproj", "{D98EEB58-0B19-4D18-B55E-F7E5DD34D949}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Instrument_Store.Test", "..\Instrument_Store.Test\Instrument_Store.Test.csproj", "{D98EEB58-0B19-4D18-B55E-F7E5DD34D949}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

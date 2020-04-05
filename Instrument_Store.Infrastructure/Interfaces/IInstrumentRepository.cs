@@ -14,8 +14,6 @@ namespace Instrument_Store.Infrastructure.Interfaces
 
         void EditCustomer(Customer customer);
 
-        void SearchCustomer(Customer customer);
-
         void CustomerOrderHistory(Order order);
 
         void CreateOrder(Order order);

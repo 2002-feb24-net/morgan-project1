@@ -23,7 +23,16 @@ namespace Instrument_Store.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Orders()
+        {
+            return View();
+        }
+
+        public IActionResult Stores()
+        {
+            return View();
+        }
+        public IActionResult User()
         {
             return View();
         }
