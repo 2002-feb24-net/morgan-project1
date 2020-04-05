@@ -8,6 +8,7 @@ namespace Instrument_Store.Infrastructure.Model
         public Products()
         {
             ProductOrders = new HashSet<ProductOrders>();
+            StoreProducts = new HashSet<StoreProducts>();
         }
 
         public int ProductId { get; set; }
@@ -18,7 +19,7 @@ namespace Instrument_Store.Infrastructure.Model
         public int Quantity { get; set; }
         public int? StoreId { get; set; }
 
-        public virtual Stores Store { get; set; }
         public virtual ICollection<ProductOrders> ProductOrders { get; set; }
+        public virtual ICollection<StoreProducts> StoreProducts { get; set; }
     }
 }

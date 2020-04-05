@@ -19,6 +19,7 @@ namespace Instrument_Store.Infrastructure.Model
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<ProductOrders> ProductOrders { get; set; }
         public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<StoreProducts> StoreProducts { get; set; }
         public virtual DbSet<Stores> Stores { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -168,11 +169,29 @@ namespace Instrument_Store.Infrastructure.Model
                 entity.Property(e => e.Type)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
 
-                entity.HasOne(d => d.Store)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__Products__StoreI__43D61337");
+            modelBuilder.Entity<StoreProducts>(entity =>
+            {
+                entity.Property(e => e.StoreProductsId)
+                    .HasColumnName("StoreProductsID")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+                entity.Property(e => e.StoreId).HasColumnName("StoreID");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.StoreProducts)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_StoreProducts_Products");
+
+                entity.HasOne(d => d.StoreProductsNavigation)
+                    .WithOne(p => p.StoreProducts)
+                    .HasForeignKey<StoreProducts>(d => d.StoreProductsId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_StoreProducts_Stores");
             });
 
             modelBuilder.Entity<Stores>(entity =>
