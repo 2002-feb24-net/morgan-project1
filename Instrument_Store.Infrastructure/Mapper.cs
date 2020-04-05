@@ -135,5 +135,27 @@ namespace Instrument_Store.Infrastructure
                 State = store.State
             };
         }
+
+        public static Core.StoreProduct MapStoreProduct(Core.StoreProduct storeProduct)
+        {
+            return new Core.StoreProduct
+            {
+                ProductId = storeProduct.ProductId,
+                StoreId = storeProduct.StoreId,
+                Quantity = storeProduct.Quantity,
+                StoreProductsId = storeProduct.StoreProductsId
+            };
+        }
+
+        public static Model.StoreProducts MapStoreProduct(Model.StoreProducts storeProduct)
+        {
+            return new Model.StoreProducts
+            {
+                ProductId = storeProduct.ProductId,
+                StoreId = storeProduct.StoreId,
+                Quantity = storeProduct.Quantity,
+                StoreProductsId = storeProduct.StoreProductsId
+            };
+        }
     }
 }

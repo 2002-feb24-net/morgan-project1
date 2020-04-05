@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace Instrument_Store.Core.Model
+namespace Instrument_Store.Core
 {
-    class StoreProduct
+    public class StoreProduct
     {
         public int ProductId { get; set; }
 
@@ -13,6 +13,7 @@ namespace Instrument_Store.Core.Model
 
         public int Quantity { get; set; }
 
+        [Required]
         public int StoreProductsId { get; set; }
     }
 }
