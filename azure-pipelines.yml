@@ -1,0 +1,51 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+jobs:
+- job: build
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  steps:
+
+  #- script: echo Hello, world!
+  #  displayName: Print hello world
+
+  #- script: |
+  #    echo 'Showing current directory contents'
+  #    ls
+  #  displayName: Show directory contents
+
+  - script: dotnet build
+    workingDirectory: Instrument_Store
+    displayName: dotnet build
+
+  - script: dotnet test --logger trx
+    displayName: dotnet test
+
+  - task: PublishTestResults@2
+    condition: succededOrFailed()
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'
+    displayName: Publish test results to build
+
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'publish'
+      publishWebProjects: true
+      zipAfterPublish: true
+    displayName: dotnet publish + zip
+
+  - task: AzureRmWebAppDeployment@4
+    inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription: 'Azure subscription 1(22b40f46-2528-4e02-a63d-ea3ba634e32d)'
+      appType: 'webApp'
+      WebAppName: 'test-mvc-hay'
+      packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
