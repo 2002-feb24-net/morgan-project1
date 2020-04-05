@@ -9,23 +9,23 @@ using Instrument_Store.Infrastructure.Model;
 
 namespace Instrument_Store.Web.Controllers
 {
-    public class CustomersController : Controller
+    public class UserController : Controller
     {
         private readonly StoreDbContext _context;
 
-        public CustomersController(StoreDbContext context)
+        public UserController(StoreDbContext context)
         {
             _context = context;
         }
 
-        // GET: Customers
+        // GET: User
         public async Task<IActionResult> Index()
         {
             var storeDbContext = _context.Customers.Include(c => c.Store);
             return View(await storeDbContext.ToListAsync());
         }
 
-        // GET: Customers/Details/5
+        // GET: User/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,14 +44,14 @@ namespace Instrument_Store.Web.Controllers
             return View(customers);
         }
 
-        // GET: Customers/Create
+        // GET: User/Create
         public IActionResult Create()
         {
             ViewData["StoreId"] = new SelectList(_context.Stores, "StoreId", "StoreId");
             return View();
         }
 
-        // POST: Customers/Create
+        // POST: User/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -68,7 +68,7 @@ namespace Instrument_Store.Web.Controllers
             return View(customers);
         }
 
-        // GET: Customers/Edit/5
+        // GET: User/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,7 +85,7 @@ namespace Instrument_Store.Web.Controllers
             return View(customers);
         }
 
-        // POST: Customers/Edit/5
+        // POST: User/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -121,7 +121,7 @@ namespace Instrument_Store.Web.Controllers
             return View(customers);
         }
 
-        // GET: Customers/Delete/5
+        // GET: User/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -140,7 +140,7 @@ namespace Instrument_Store.Web.Controllers
             return View(customers);
         }
 
-        // POST: Customers/Delete/5
+        // POST: User/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
