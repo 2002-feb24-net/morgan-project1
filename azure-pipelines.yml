@@ -20,10 +20,10 @@ jobs:
   #    echo 'Showing current directory contents'
   #    ls
   #  displayName: Show directory contents
-
-  - script: dotnet build
-    workingDirectory: Instrument_Store *.sln
-    displayName: dotnet build
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+      projects: 'Instrument_Store *.sln'
 
   - script: dotnet test --logger trx
     displayName: dotnet test
