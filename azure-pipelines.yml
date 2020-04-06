@@ -25,7 +25,7 @@ jobs:
   - task: DotNetCoreCLI@2
     inputs:
       command: 'build'
-      projects: 'Instrument_Store'
+      projects: 'Instrument_Store Instrument_Store.sln'
 
   - script: dotnet test --logger trx
     displayName: dotnet test
