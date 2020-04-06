@@ -66,21 +66,7 @@ namespace Instrument_Store.Infrastructure
             };
         }
 
-        public static Model.Products MapProduct(Model.Products products)
-        {
-            return new Model.Products
-            {
-                ProductId = products.ProductId,
-                Name = products.Name,
-                Type = products.Type,
-                Brand = products.Brand,
-                Price = products.Price,
-                Quantity = products.Quantity,
-                StoreId = products.StoreId
-            };
-        }
-
-        public static Core.Product MapProduct(Core.Product products)
+        public static Core.Product MapProduct(Model.Products products)
         {
             return new Core.Product
             {
@@ -94,9 +80,23 @@ namespace Instrument_Store.Infrastructure
             };
         }
 
-        public static Model.ProductOrders MapProductOrder(Model.ProductOrders productOrder)
+        public static Model.Products MapProduct(Core.Product products)
         {
-            return new Model.ProductOrders
+            return new Model.Products
+            {
+                ProductId = products.ProductId,
+                Name = products.Name,
+                Type = products.Type,
+                Brand = products.Brand,
+                Price = products.Price,
+                Quantity = products.Quantity,
+                StoreId = products.StoreId
+            };
+        }
+
+        public static Core.ProductOrder MapProductOrder(Model.ProductOrders productOrder)
+        {
+            return new Core.ProductOrder
             {
                 ProductOrderId = productOrder.ProductOrderId,
                 ProductId = productOrder.ProductId,
@@ -105,9 +105,9 @@ namespace Instrument_Store.Infrastructure
             };
         }
 
-        public static Core.ProductOrder MapProductOrder(Core.ProductOrder productOrder)
+        public static Model.ProductOrders MapProductOrder(Core.ProductOrder productOrder)
         {
-            return new Core.ProductOrder
+            return new Model.ProductOrders
             {
                 ProductOrderId = productOrder.ProductOrderId,
                 ProductId = productOrder.ProductId,
@@ -136,7 +136,7 @@ namespace Instrument_Store.Infrastructure
             };
         }
 
-        public static Core.StoreProduct MapStoreProduct(Core.StoreProduct storeProduct)
+        public static Core.StoreProduct MapStoreProduct(Model.StoreProducts storeProduct)
         {
             return new Core.StoreProduct
             {
@@ -147,7 +147,7 @@ namespace Instrument_Store.Infrastructure
             };
         }
 
-        public static Model.StoreProducts MapStoreProduct(Model.StoreProducts storeProduct)
+        public static Model.StoreProducts MapStoreProduct(Core.StoreProduct storeProduct)
         {
             return new Model.StoreProducts
             {

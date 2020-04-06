@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Instrument_Store.Infrastructure.Model
 {
@@ -12,7 +13,10 @@ namespace Instrument_Store.Infrastructure.Model
         }
 
         public int StoreId { get; set; }
+
+        [Required(ErrorMessage = "A city is required")]
         public string City { get; set; }
+        [Required(ErrorMessage = "A state is required")]
         public string State { get; set; }
 
         public virtual StoreProducts StoreProducts { get; set; }

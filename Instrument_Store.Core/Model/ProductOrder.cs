@@ -16,6 +16,6 @@ namespace Instrument_Store.Core
         public int OrderId { get; set; }
 
         [Required]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
     }
 }

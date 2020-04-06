@@ -32,7 +32,7 @@ namespace Instrument_Store.Infrastructure.Repositories
             IQueryable<Stores> items = _cont.Stores;
             if (search != null)
             {
-                items = items.Where(s => s.City.Contains(search));
+                items = items.Where(s => s.State.Contains(search));
             }
             return items.Select(Mapper.MapStore);
         }
