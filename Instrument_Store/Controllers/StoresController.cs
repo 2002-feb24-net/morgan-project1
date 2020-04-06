@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Instrument_Store.Infrastructure.Model;
+using Instrument_Store.Infrastructure.Repositories;
 
 namespace Instrument_Store.Web.Controllers
 {
     public class StoresController : Controller
     {
         private readonly StoreDbContext _context;
+        private readonly InstrumentRepository instrumentRepository = new InstrumentRepository();
 
         public StoresController(StoreDbContext context)
         {
@@ -19,9 +21,10 @@ namespace Instrument_Store.Web.Controllers
         }
 
         // GET: Stores
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery]string search = "")
         {
-            return View(await _context.Stores.ToListAsync());
+            IEnumerable<Core.Store> stores = instrumentRepository.GetStores(search);
+            return View(stores);
         }
 
         // GET: Stores/Details/5

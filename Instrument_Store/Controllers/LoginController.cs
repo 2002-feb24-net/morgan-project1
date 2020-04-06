@@ -6,54 +6,33 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Instrument_Store.Infrastructure.Model;
-using Instrument_Store.Infrastructure.Repositories;
 
 namespace Instrument_Store.Web.Controllers
 {
-    public class UserController : Controller
+    public class LoginController : Controller
     {
         private readonly StoreDbContext _context;
-        private readonly InstrumentRepository instrumentRepository = new InstrumentRepository();
 
-        public UserController(StoreDbContext context)
+        public LoginController(StoreDbContext context)
         {
             _context = context;
         }
 
-        // GET: User
-        public async Task<IActionResult> Index([FromQuery]string search = "")
+        // GET: Login
+        public async Task<IActionResult> Index()
         {
-            IEnumerable<Core.Customer> customers = instrumentRepository.GetCustomers(search);
-            return View(customers);
+            var storeDbContext = _context.Customers.Include(c => c.Store);
+            return View(await storeDbContext.ToListAsync());
         }
 
-        // GET: User/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customers = await _context.Customers
-                .Include(c => c.Store)
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
-            if (customers == null)
-            {
-                return NotFound();
-            }
-
-            return View(customers);
-        }
-
-        // GET: User/Create
+        // GET: Login/Create
         public IActionResult Create()
         {
             ViewData["StoreId"] = new SelectList(_context.Stores, "StoreId", "StoreId");
             return View();
         }
 
-        // POST: User/Create
+        // POST: Login/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -70,24 +49,7 @@ namespace Instrument_Store.Web.Controllers
             return View(customers);
         }
 
-        // GET: User/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customers = await _context.Customers.FindAsync(id);
-            if (customers == null)
-            {
-                return NotFound();
-            }
-            ViewData["StoreId"] = new SelectList(_context.Stores, "StoreId", "StoreId", customers.StoreId);
-            return View(customers);
-        }
-
-        // POST: User/Edit/5
+        // POST: Login/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -123,7 +85,7 @@ namespace Instrument_Store.Web.Controllers
             return View(customers);
         }
 
-        // GET: User/Delete/5
+        // GET: Login/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -142,7 +104,7 @@ namespace Instrument_Store.Web.Controllers
             return View(customers);
         }
 
-        // POST: User/Delete/5
+        // POST: Login/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

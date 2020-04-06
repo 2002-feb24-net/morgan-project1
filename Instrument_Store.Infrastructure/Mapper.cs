@@ -6,7 +6,7 @@ namespace Instrument_Store.Infrastructure
 {
     public static class Mapper
     {
-        public static Core.Customer MapCustomer(Model.Customers customers )
+        public static Core.Customer MapCustomer(Model.Customers customers)
         {
             return new Core.Customer
             {
@@ -116,7 +116,7 @@ namespace Instrument_Store.Infrastructure
             };
         }
 
-        public static Core.Store MapStore(Core.Store store)
+        public static Core.Store MapStore(Model.Stores store)
         {
             return new Core.Store
             {
@@ -126,7 +126,7 @@ namespace Instrument_Store.Infrastructure
             };
         }
 
-        public static Model.Stores MapStore(Model.Stores store)
+        public static Model.Stores MapStore(Core.Store store)
         {
             return new Model.Stores
             {

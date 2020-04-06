@@ -10,22 +10,31 @@ namespace Instrument_Store.Core
         [Required]
         public int CustomerId { get; set; }
 
-        [Required]
+
         public string LastName { get; set; }
 
-        [Required]
+
         public string FirstName { get; set; }
+
 
         [Required]
         public int StoreId { get; set; }
 
+        [Required]
+        public string Email { get; set; }
+
+
         public string Phone { get; set; }
+
 
         public string Address { get; set; }
 
+
         public string City { get; set; }
 
+
         public string State { get; set; }
+
 
         public string FullName { get; set; }
     }

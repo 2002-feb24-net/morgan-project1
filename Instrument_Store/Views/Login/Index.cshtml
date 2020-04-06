@@ -1,18 +1,10 @@
-﻿@model IEnumerable<Instrument_Store.Core.Customer>
+﻿@model IEnumerable<Instrument_Store.Infrastructure.Model.Customers>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>User Overview</h1>
-
-<div>
-    <form asp-action="Index" method="GET" class="form-inline">
-        <label class="sr-only" for="search">Search:</label>
-        <input type="search" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" name="search" placeholder="Search" />
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -45,7 +37,7 @@
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StoreId)
+                @Html.DisplayNameFor(model => model.Store)
             </th>
             <th></th>
         </tr>
@@ -78,7 +70,7 @@
                 @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StoreId)
+                @Html.DisplayFor(modelItem => item.Store.StoreId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
