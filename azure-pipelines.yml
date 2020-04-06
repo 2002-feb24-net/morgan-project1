@@ -16,14 +16,16 @@ jobs:
   #- script: echo Hello, world!
   #  displayName: Print hello world
 
-  #- script: |
-  #    echo 'Showing current directory contents'
-  #    ls
-  #  displayName: Show directory contents
+  - script: |
+      echo 'Showing current directory contents'
+      ls
+    displayName: Show directory contents
+
+
   - task: DotNetCoreCLI@2
     inputs:
       command: 'build'
-      projects: 'Instrument_Store *.sln'
+      projects: ''
 
   - script: dotnet test --logger trx
     displayName: dotnet test
