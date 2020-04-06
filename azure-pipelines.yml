@@ -27,14 +27,14 @@ jobs:
     displayName: dotnet build
 
 
-  - script: dotnet test --logger trx
-    displayName: dotnet test
+  #- script: dotnet test --logger trx
+  #  displayName: dotnet test
 
-  - task: PublishTestResults@2
-    inputs:
-      testRunner: VSTest
-      testResultsFiles: '**/*.trx'
-    displayName: Publish test results to build
+  #- task: PublishTestResults@2
+  #  inputs:
+  #    testRunner: VSTest
+  #    testResultsFiles: '**/*.trx'
+  #  displayName: Publish test results to build
 
   - task: DotNetCoreCLI@2
     inputs:
