@@ -29,7 +29,6 @@ jobs:
     displayName: dotnet test
 
   - task: PublishTestResults@2
-    condition: succededOrFailed()
     inputs:
       testRunner: VSTest
       testResultsFiles: '**/*.trx'
