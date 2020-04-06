@@ -21,11 +21,11 @@ jobs:
       ls
     displayName: Show directory contents
 
+  - script: |
+      cd Instrument_Store
+      dotnet build *.sln
+    displayName: dotnet build
 
-  - task: DotNetCoreCLI@2
-    inputs:
-      command: 'build'
-      projects: 'Instrument_Store Instrument_Store.sln'
 
   - script: dotnet test --logger trx
     displayName: dotnet test
