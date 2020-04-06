@@ -38,7 +38,7 @@ namespace Instrument_Store.Infrastructure
             };
         }
 
-        public static Core.Order MapOrder(Model.Orders orders)
+        public static Core.Order MapOrder(Model.Order orders)
         {
             return new Core.Order
             {
@@ -52,9 +52,9 @@ namespace Instrument_Store.Infrastructure
             };
         }
 
-        public static Model.Orders MapOrder(Core.Order orders)
+        public static Model.Order MapOrder(Core.Order orders)
         {
-            return new Model.Orders
+            return new Model.Order
             {
                 OrderId = orders.OrderId,
                 CustomerId = orders.CustomerId,

@@ -1,54 +1,57 @@
 ﻿@model Instrument_Store.Infrastructure.Model.Order
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Delete";
 }
 
-<h1>Order details</h1>
+<h1>Delete</h1>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Order</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            <p>Product Order Id</p>
+            @Html.DisplayNameFor(model => model.ProductOrdersId)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ProductOrdersId)
         </dd>
         <dt class = "col-sm-2">
-            <p>Date</p>
+            @Html.DisplayNameFor(model => model.Date)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Date)
         </dd>
         <dt class = "col-sm-2">
-            <p>Quantity</p>
+            @Html.DisplayNameFor(model => model.Quantities)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Quantities)
         </dd>
         <dt class = "col-sm-2">
-            <p>Total Price</p>
+            @Html.DisplayNameFor(model => model.TotalPrice)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TotalPrice)
         </dd>
         <dt class = "col-sm-2">
-            <p>Customer</p>
+            @Html.DisplayNameFor(model => model.Customer)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Customer.FullName)
-        </dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd class>
         <dt class = "col-sm-2">
-            <p>Store location</p>
+            @Html.DisplayNameFor(model => model.Store)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Store.City)
-        </dd>
+        </dd class>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.OrderId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OrderId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
 </div>

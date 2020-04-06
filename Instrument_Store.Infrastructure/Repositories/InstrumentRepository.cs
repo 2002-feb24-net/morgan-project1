@@ -36,17 +36,23 @@ namespace Instrument_Store.Infrastructure.Repositories
             }
             return items.Select(Mapper.MapStore);
         }
+
         public void AddCustomer(Customer customer)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateOrder(Order order)
+        public void CreateOrder(Core.Order order)
         {
             throw new NotImplementedException();
         }
 
-        public void CustomerOrderHistory(Order order)
+        public void OrderWithCustomerDetails(Core.Order order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CustomerOrderHistory(Core.Order order)
         {
             throw new NotImplementedException();
         }
@@ -61,7 +67,7 @@ namespace Instrument_Store.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public void StoreOrderHistory(Order order)
+        public void StoreOrderHistory(Core.Order order)
         {
             throw new NotImplementedException();
         }

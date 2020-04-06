@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Instrument_Store.Infrastructure.Model.Stores>
+﻿@model IEnumerable<Instrument_Store.Core.Store>
 
 @{
     ViewData["Title"] = "Index";
@@ -21,10 +21,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                <h3>City</h3>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.State)
+                <h3>State</h3>
             </th>
             <th></th>
         </tr>

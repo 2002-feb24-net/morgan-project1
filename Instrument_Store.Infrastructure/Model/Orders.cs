@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Instrument_Store.Infrastructure.Model
 {
-    public partial class Orders
+    public partial class Order
     {
-        public Orders()
+        public Order()
         {
             ProductOrders = new HashSet<ProductOrders>();
         }

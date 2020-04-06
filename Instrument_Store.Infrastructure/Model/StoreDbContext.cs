@@ -16,7 +16,7 @@ namespace Instrument_Store.Infrastructure.Model
         }
 
         public virtual DbSet<Customers> Customers { get; set; }
-        public virtual DbSet<Orders> Orders { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<ProductOrders> ProductOrders { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<StoreProducts> StoreProducts { get; set; }
@@ -88,7 +88,7 @@ namespace Instrument_Store.Infrastructure.Model
                     .HasConstraintName("FK_Customers_Stores");
             });
 
-            modelBuilder.Entity<Orders>(entity =>
+            modelBuilder.Entity<Order>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
                     .HasName("PK__Orders__C3905BAF3A7D3E05");

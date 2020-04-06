@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Instrument_Store.Infrastructure.Model.Orders>
+﻿@model IEnumerable<Instrument_Store.Infrastructure.Model.Order>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,22 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductOrdersId)
+                <p>Product Order Id</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                <p>Date</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantities)
+                <p>Quantity</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TotalPrice)
+                <p>Total Price</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customer)
+                <p>Customer</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Store)
+                <p>Store</p>
             </th>
             <th></th>
         </tr>
@@ -49,10 +49,10 @@
                 @Html.DisplayFor(modelItem => item.TotalPrice)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Customer.FirstName)
+                @Html.DisplayFor(modelItem => item.Customer.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Store.StoreId)
+                @Html.DisplayFor(modelItem => item.Store.City)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.OrderId">Details</a>
