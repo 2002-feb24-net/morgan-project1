@@ -22,7 +22,7 @@ jobs:
   #  displayName: Show directory contents
 
   - script: dotnet build
-    workingDirectory: Instrument_Store
+    workingDirectory: Instrument_Store *.sln
     displayName: dotnet build
 
   - script: dotnet test --logger trx
