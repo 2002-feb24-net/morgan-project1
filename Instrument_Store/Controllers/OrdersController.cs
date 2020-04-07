@@ -21,7 +21,9 @@ namespace Instrument_Store.Web.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var storeDbContext = _context.Orders.Include(o => o.Customer).Include(o => o.Store);
+            var storeDbContext = _context.Orders.Include(o => o.Customer)
+                .Include(o => o.Store)
+                .Include(o => o.pr);
             return View(await storeDbContext.ToListAsync());
         }
 
@@ -48,7 +50,7 @@ namespace Instrument_Store.Web.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "FirstName");
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "FullName");
             ViewData["StoreId"] = new SelectList(_context.Stores, "StoreId", "City");
             return View();
         }
