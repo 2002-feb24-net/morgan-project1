@@ -20,6 +20,7 @@ namespace Instrument_Store.Infrastructure.Model
 
         public virtual Customers Customer { get; set; }
         public virtual Stores Store { get; set; }
+
         public virtual ICollection<ProductOrders> ProductOrders { get; set; }
     }
 }

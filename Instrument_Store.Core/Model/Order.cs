@@ -7,6 +7,7 @@ namespace Instrument_Store.Core
 {
     public class Order
     {
+
         [Required]
         public int OrderId { get; set; }
         
@@ -22,6 +23,8 @@ namespace Instrument_Store.Core
         public DateTime? Date { get; set; }
 
         public int? Quantities { get; set; }
+
+        public List<Product> products { get; set; } = new List<Product>();
 
         public decimal? TotalPrice { get; set; }
     }

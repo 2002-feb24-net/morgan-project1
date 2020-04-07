@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Instrument_Store.Infrastructure.Model;
+using Instrument_Store.Infrastructure;
 
 namespace Instrument_Store.Web.Controllers
 {
@@ -22,8 +23,7 @@ namespace Instrument_Store.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var storeDbContext = _context.Orders.Include(o => o.Customer)
-                .Include(o => o.Store)
-                .Include(o => o.pr);
+                .Include(o => o.Store);
             return View(await storeDbContext.ToListAsync());
         }
 
@@ -48,11 +48,20 @@ namespace Instrument_Store.Web.Controllers
         }
 
         // GET: Orders/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "FullName");
             ViewData["StoreId"] = new SelectList(_context.Stores, "StoreId", "City");
-            return View();
+
+            //var product = await _context.Products.Where(s => s.StoreId = ...).ToListAsync();
+            var product = await _context.Products.ToListAsync();
+            var viewModel = new Instrument_Store.Core.Order()
+            {
+                products = product.Select(Mapper.MapProduct).ToList()
+            };
+
+            return View(viewModel);
+  
         }
 
         // POST: Orders/Create

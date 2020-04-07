@@ -20,7 +20,7 @@ namespace Instrument_Store.Infrastructure.Model
         public string Brand { get; set; }
 
         [Required(ErrorMessage = "A price is required")]
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
 
         [Required(ErrorMessage = "A quantity is required")]
         public int Quantity { get; set; }
